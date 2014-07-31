@@ -11,8 +11,8 @@ var keystone = require('keystone');
 
 keystone.init({
 	
-	'name': 'test',
-	'brand': 'test',
+	'name': 'Tester',
+	'brand': 'Tester',
 	
 	'less': 'public',
 	'static': 'public',
@@ -26,7 +26,7 @@ keystone.init({
 	'session': true,
 	'auth': true,
 	'user model': 'User',
-	'cookie secret': 'iRB0IlB_XTK#="QAC{!5mP9_PvdvGo}.TRZ.T!E4Mez+H,A4#|uteF^{yVVwQ.Mr'
+	'cookie secret': '.?G8ANR_T-Ir)kN",o^v}kl4Uqz+s(@/xIHK}W`Pa(Tl}f-I0Xmg=Dd/c6P-<192'
 	
 });
 
