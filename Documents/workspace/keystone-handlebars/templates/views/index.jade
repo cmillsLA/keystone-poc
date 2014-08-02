@@ -1,0 +1,32 @@
+extends ../layouts/default
+
+block content
+	.container: .jumbotron
+		if user
+			.slideshow
+				if data.slides.length
+					each slide in data.slides
+						.slide
+							img(src=slide.image.url)
+			if data.videos.length
+				ul.videos-list
+					li.videos-header.videos-title Title
+					li.videos-header.videos-type Type
+					li.videos-header.videos-duration Duration
+					li.videos-header.videos-posted Posted
+					each video in data.videos
+						li.videos-title 
+							a(href='/video-player/' + video._id) #{video.title}
+						li.videos-type #{video.types}
+						li.videos-duration #{video.duration}
+						li.videos-posted #{video._.createdAt.format('MMMM Do, YYYY')}
+				.clear
+			else
+				p No videos found for this screening room.
+		else
+			h1 Welcome to DSR
+			p The information you provide will only be used to create your secure log-in to the NBCU Digital Screening Room site and to contact you in relation to the service and it will only be shared by third parties required to deliver this service.
+			p This information will be available to our staff in the United States who support and administer the site. We will ensure your information is protected to an equally high standard wherever it is held and used by our staff. By logging into this website you agree to us using your information is this way, in particular that the information will be accessible to staff in the United States.
+
+block js
+	script(src="/js/slideshow.js")

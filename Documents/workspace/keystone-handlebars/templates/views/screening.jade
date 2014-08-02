@@ -1,0 +1,24 @@
+extends ../layouts/default
+
+block intro
+	.container
+		h1 Screening Room: #{data.room.name}
+		p.right #{data.room.company} | #{data.room.date}
+		
+block content
+	.container: .jumbotron
+		if data.grouped.length
+			ul.videos-list
+				li.videos-header.videos-title Title
+				li.videos-header.videos-type Type
+				li.videos-header.videos-duration Duration
+				li.videos-header.videos-posted Posted
+				each group in data.grouped
+					if(group.videos.length)
+						div.video-list-wrap #{group.name}
+							each video in group.videos
+								li.videos-title 
+									a(href='/video-player/' + video._id) #{video.title}
+								li.videos-type #{video.types}
+								li.videos-duration #{video.duration}
+								li.videos-posted #{video._.createdAt.format('MMMM Do, YYYY')}

@@ -1,0 +1,28 @@
+extends ../layouts/default
+
+block intro
+	.container
+		h1 Video: #{data.currentVideo.name}
+		p.right #{data.currentVideo.createdAt}
+		
+block content
+	.container: .jumbotron
+		.video-player
+			video(width='100%', controls)
+				source(src=data.currentVideo.videoLink, type='video/mp4')
+				//source(src=data.currentVideo.videoLink, type='video/ogg', codecs='vp8, vorbis')
+				//source(src=data.currentVideo.videoLink, type='video/webm', codecs='avc1.42E01E, mp4a.40.2')
+				p Your browser does not support the video tag.
+		if data.videos.length
+			ul.videos-list
+				li.videos-header.videos-title Title
+				li.videos-header.videos-type Type
+				li.videos-header.videos-duration Duration
+				li.videos-header.videos-posted Posted
+				each video in data.videos
+					li.videos-title 
+						a(href='/video-player/' + video._id) #{video.title}
+					li.videos-type #{video.types}
+					li.videos-duration #{video.duration}
+					li.videos-posted #{video._.createdAt.format('MMMM Do, YYYY')}
+			.clear
